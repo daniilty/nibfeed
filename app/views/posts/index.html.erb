@@ -1,0 +1,18 @@
+<% provide(:title, "Лента") %>
+<% if isadm %>
+  <%= link_to image_tag("add.svg"), create_post_url, class: "float1" %>
+<% end %>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+  <div id="post">
+    <h1 align="center"><%= post.title %></h1>
+    <p><%= post.content %></p>
+    <% if post.image.attached? %>
+      <img src="<%= url_for(post.image) %>"></img>
+    <% end %>
+    <% if isadm %>
+      <%= link_to 'delete', '/delete/' + post.id.to_s, method: :delete %>   
+    <% end %>
+    </div>
+  <% end %>
+<% end %>

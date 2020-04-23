@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('nibirusmall.png') %>
+  </head>
+
+  <body>
+    <%= image_tag "nibiru.png", alt: "log", class: 'logo' %>
+      <% if isadm %>
+          <%= link_to (image_tag "exit.svg"), logout_path, method: :delete, class: "float" %>
+      <% end %>
+    <%= yield %>
+  </body>
+</html>
